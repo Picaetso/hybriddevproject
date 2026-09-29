@@ -102,13 +102,14 @@ export default function HomeScreen() {
                 </View>
               </View>
 
-              <Pressable
-                accessibilityRole="button"
-                onPress={handleSignIn}
-                style={({ pressed }) => [styles.submitButton, pressed && styles.submitPressed]}>
-                <Text style={styles.submitText}>Sign in</Text>
-                <Text style={styles.submitArrow}>→</Text>
-              </Pressable>
+              <Pressable accessibilityRole="button" onPress={handleSignIn}>
+                {({ pressed }) => (
+                  <View style={[styles.submitButton, pressed && styles.submitPressed]}>
+                    <Text style={styles.submitText}>Sign in</Text>
+                    <Text style={styles.submitArrow}>→</Text>
+                  </View>
+                )}
+                </Pressable>
 
               {message ? (
                 <Text accessibilityLiveRegion="polite" style={styles.message}>
@@ -140,7 +141,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     paddingHorizontal: 24,
-    paddingVertical: 28,
+    paddingVertical: 20,
   },
   content: {
     width: '100%',
@@ -151,7 +152,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
-    marginBottom: 58,
+    marginBottom: 32,
   },
   brandMark: {
     width: 32,
@@ -242,11 +243,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 18,
     marginTop: 4,
     backgroundColor: Palette.ink,
     borderRadius: 8,
     width: '100%',
+    flexShrink: 0,
+    paddingHorizontal: 18,
+  },
+  submitContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexWrap: 'nowrap',
+    gap: 8,
   },
   submitPressed: {
     opacity: 0.85,
@@ -255,10 +264,12 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontSize: 15,
     fontWeight: '700',
+    flexShrink: 0,
   },
   submitArrow: {
     color: Palette.accent,
     fontSize: 21,
+    flexShrink: 0,
   },
   message: {
     color: Palette.muted,
@@ -270,7 +281,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
-    marginTop: 50,
+    marginTop: 32,
   },
   footerRule: {
     width: 28,
