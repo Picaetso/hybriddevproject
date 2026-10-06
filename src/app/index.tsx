@@ -11,10 +11,12 @@ import {
   View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useRouter } from 'expo-router';
 
 import { Palette } from '@/constants/theme';
 
 export default function HomeScreen() {
+  const router = useRouter();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -26,7 +28,7 @@ export default function HomeScreen() {
       return;
     }
 
-    setMessage('Sign-in is ready to connect to an authentication service.');
+    router.push('./home');
   }
 
   return (
