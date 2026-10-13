@@ -1,9 +1,31 @@
 import React from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
+import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { WebView } from 'react-native-webview';
 
 export default function HomeScreen() {
+  const router = useRouter();
+
+  const openProDetails = React.useCallback((message: string) => {
+    if (message === 'pro:elena') {
+      router.push({ pathname: '/pro-detail-1', params: { service: 'Cleaning' } });
+    }
+  }, [router]);
+
+  React.useEffect(() => {
+    if (Platform.OS !== 'web') {
+      return;
+    }
+
+    const handleMessage = (event: MessageEvent<string>) => {
+      openProDetails(event.data);
+    };
+
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, [openProDetails]);
+
   const htmlContent = `
     <!DOCTYPE html>
 
@@ -161,6 +183,16 @@ export default function HomeScreen() {
         }
         }
     </style>
+    <script>
+      function openProDetails() {
+        var message = 'pro:elena';
+        if (window.ReactNativeWebView) {
+          window.ReactNativeWebView.postMessage(message);
+        } else {
+          window.parent.postMessage(message, '*');
+        }
+      }
+    </script>
     </head>
     <body class="bg-[#E6F2DD] text-[#263D36] min-h-screen antialiased flex justify-center selection:bg-secondary-container">
     <div id="app-shell" class="w-full min-h-screen bg-[#E6F2DD] relative pb-28 flex flex-col">
@@ -289,7 +321,7 @@ export default function HomeScreen() {
     <div class="group flex flex-col items-center cursor-pointer active:scale-95 transition-transform">
     <div class="w-full aspect-square rounded-[18px] bg-white border border-[#88BDA4]/25 p-2 custom-shadow-soft group-hover:bg-[#B1D3B9]/20 transition-colors">
     <img
-    src="./images/cleaning.jpg"
+    src="https://detailcleanings.com/wp-content/uploads/2021/05/how-to-sweep-floors.jpeg"
     alt="Cleaning"
     class="block h-full w-full rounded-[12px] object-cover"
     />
@@ -301,7 +333,7 @@ export default function HomeScreen() {
     <div class="w-full aspect-square rounded-[18px] bg-white border border-[#88BDA4]/25 flex items-center justify-center custom-shadow-soft group-hover:bg-[#B1D3B9]/20 transition-colors">
     <div class="w-full aspect-square rounded-[18px] bg-white border border-[#88BDA4]/25 p-2 custom-shadow-soft group-hover:bg-[#B1D3B9]/20 transition-colors">
     <img
-    src="./images/plumbing.jpeg"
+    src="https://trusteyman.com/wp-content/uploads/2019/02/how-does-plumbing-work-e1548696261445.jpeg"
     alt="Plumbing"
     class="block h-full w-full rounded-[12px] object-cover"
     />
@@ -314,7 +346,7 @@ export default function HomeScreen() {
     <div class="w-full aspect-square rounded-[18px] bg-white border border-[#88BDA4]/25 flex items-center justify-center custom-shadow-soft group-hover:bg-[#B1D3B9]/20 transition-colors">
     <div class="w-full aspect-square rounded-[18px] bg-white border border-[#88BDA4]/25 p-2 custom-shadow-soft group-hover:bg-[#B1D3B9]/20 transition-colors">
     <img
-    src="./images/electrical.jpg"
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQepCS2qLvaNzRuXln2zq3F75L4WldpMv3Dl-PwpGRDsFMNvF2HQk2sh24&s=10"
     alt="Electrical"
     class="block h-full w-full rounded-[12px] object-cover"
     />
@@ -327,7 +359,7 @@ export default function HomeScreen() {
     <div class="w-full aspect-square rounded-[18px] bg-white border border-[#88BDA4]/25 flex items-center justify-center custom-shadow-soft group-hover:bg-[#B1D3B9]/20 transition-colors">
     <div class="w-full aspect-square rounded-[18px] bg-white border border-[#88BDA4]/25 p-2 custom-shadow-soft group-hover:bg-[#B1D3B9]/20 transition-colors">
     <img
-    src="./images/gardening.jpg"
+    src="https://images.airtasker.com/v7/https://airtasker-seo-assets-prod.s3.amazonaws.com/en_AU/1781827869992-gardener-planting-red-flower-seedling.jpg?gravity=smart&w=1920&h=1080"
     alt="Gardening"
     class="block h-full w-full rounded-[12px] object-cover"
     />
@@ -340,7 +372,7 @@ export default function HomeScreen() {
     <div class="w-full aspect-square rounded-[18px] bg-white border border-[#88BDA4]/25 flex items-center justify-center custom-shadow-soft group-hover:bg-[#B1D3B9]/20 transition-colors">
     <div class="w-full aspect-square rounded-[18px] bg-white border border-[#88BDA4]/25 p-2 custom-shadow-soft group-hover:bg-[#B1D3B9]/20 transition-colors">
     <img
-    src="./images/painting.jpg"
+    src="https://www.maramani.com/cdn/shop/articles/1.jpg?v=1683367109&width=2048"
     alt="Painting"
     class="block h-full w-full rounded-[12px] object-cover"
     />
@@ -353,7 +385,7 @@ export default function HomeScreen() {
     <div class="w-full aspect-square rounded-[18px] bg-white border border-[#88BDA4]/25 flex items-center justify-center custom-shadow-soft group-hover:bg-[#B1D3B9]/20 transition-colors">
     <div class="w-full aspect-square rounded-[18px] bg-white border border-[#88BDA4]/25 p-2 custom-shadow-soft group-hover:bg-[#B1D3B9]/20 transition-colors">
     <img
-    src="./images/appliances.jpg"
+    src="https://irp.cdn-website.com/0581a8fe934c48e1a6cc8d6d924bfafe/dms3rep/multi/opt/GettyImages-1309386316-640w.jpg"
     alt="Appliances"
     class="block h-full w-full rounded-[12px] object-cover"
     />
@@ -366,7 +398,7 @@ export default function HomeScreen() {
     <div class="w-full aspect-square rounded-[18px] bg-white border border-[#88BDA4]/25 flex items-center justify-center custom-shadow-soft group-hover:bg-[#B1D3B9]/20 transition-colors">
     <div class="w-full aspect-square rounded-[18px] bg-white border border-[#88BDA4]/25 p-2 custom-shadow-soft group-hover:bg-[#B1D3B9]/20 transition-colors">
     <img
-    src="./images/handyman.jpg"
+    src="https://www.redleescs.com/images/janitorial-services/handyman-with-tools-lg.jpg"
     alt="Handyman"
     class="block h-full w-full rounded-[12px] object-cover"
     />
@@ -379,7 +411,7 @@ export default function HomeScreen() {
     <div class="w-full aspect-square rounded-[18px] bg-white border border-[#88BDA4]/25 flex items-center justify-center custom-shadow-soft group-hover:bg-[#B1D3B9]/20 transition-colors">
     <div class="w-full aspect-square rounded-[18px] bg-white border border-[#88BDA4]/25 p-2 custom-shadow-soft group-hover:bg-[#B1D3B9]/20 transition-colors">
     <img
-    src="./images/pestcontrol.jpg"
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv7gfOHZLpv5IAVSkAKquCEfjrhUtJIkCwvq43NP2IfBZO68QSU4juSvs&s=10"
     alt="Pest Control"
     class="block h-full w-full rounded-[12px] object-cover"
     />
@@ -406,7 +438,7 @@ export default function HomeScreen() {
     <div>
     <div class="flex items-start gap-3 mb-3">
     <div class="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border border-[#88BDA4]/30">
-    <img class="w-full h-full object-cover" data-alt="A portrait of Elena Rostova, a smiling female professional deep cleaner wearing a tidy apron with a neutral clean domestic background. Warm, natural diffused daylight highlights her approachable expression, maintaining an organic and dependable biophilic aesthetic with sage green accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-euvNKZ5aFNIbPS0kC6uDzZU_GLCZXso5vlTbWxpVheW1h8Y8AFGgydfKquJVRDdrTC0QFh50QKn2FIN7J7PsXtw-ennm8yvCU_qZhpEdVYSvEuNH89mN6kZOMr99GR9zMy8hdCurjZSPpp7DeNjSXWjyZ3SvkKQoBsBL1lgJ-S4Rn4moHY8NyfWmHqCsCVgFpl0VM6eL9Re4MprjiwCh6Jr0gDdZuQqLKZMxP6bPQ5fDibVRrVDZLg"/>
+    <img class="w-full h-full object-cover" data-alt="A portrait of Elena Rostova, a smiling female professional deep cleaner wearing a tidy apron with a neutral clean domestic background. Warm, natural diffused daylight highlights her approachable expression, maintaining an organic and dependable biophilic aesthetic with sage green accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-5OYSVr6TszF-yZsGuWSKUJMy4agSHpqOzWjE3Lo9O3JZJi0YvWrdi27Y9iXMO22ot9XNot2wEqM3h-VCf-OVAFUpm6zDsJCEkkL0JU2DJM3VPu4ZS3LkEG3Fms0mVYLHyE-jPKtIpT-XbL4nndx8y5eA4AxJtY8dTGmK7VpXtPrTOz-2K0bEaO0otBY6PDgJe5Q4vsF27vxNu38RUaBQnRwwVaWnwVyPjJMVtc7X_LIPoaRfn1iQSg"/>
     <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-[#659287] rounded-full border-2 border-white flex items-center justify-center">
     <span class="material-symbols-outlined text-[9px] text-white font-bold" data-icon="check">check</span>
     </span>
@@ -434,7 +466,7 @@ export default function HomeScreen() {
     <span class="font-headline-sm text-[17px] font-extrabold text-[#263D36]">$35</span>
     <span class="font-body-sm text-[11px] text-[#4A685E]">/hr</span>
     </div>
-    <button class="h-[34px] px-4 rounded-full bg-[#659287] text-white font-label-md text-label-md font-semibold active:scale-95 transition-transform flex items-center gap-1">
+    <button class="h-[34px] px-4 rounded-full bg-[#659287] text-white font-label-md text-label-md font-semibold active:scale-95 transition-transform flex items-center gap-1" onclick="openProDetails()">
     <span>Book</span>
     </button>
     </div>
@@ -527,6 +559,7 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <WebView
+        onMessage={(event) => openProDetails(event.nativeEvent.data)}
         originWhitelist={['*']}
         source={{ html: htmlContent }}
         style={styles.webview}
