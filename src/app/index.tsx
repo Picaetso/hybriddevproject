@@ -6,7 +6,6 @@ import {
   Platform,
   Pressable,
   ScrollView,
-  StyleSheet,
   Text,
   TextInput,
   View,
@@ -32,32 +31,47 @@ export default function HomeScreen() {
   }
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView className="flex-1 bg-[#E6F2DD]">
       <KeyboardAvoidingView
-        style={styles.flex}
+        className="flex-1"
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ScrollView
-          contentContainerStyle={styles.scrollContent}
+          contentContainerClassName="flex-grow justify-center px-6 py-5"
           keyboardShouldPersistTaps="handled">
-          <View style={styles.content}>
-            <View style={styles.brandRow}>
+          <View className="w-full max-w-[420px] self-center">
+            <View className="mb-8 flex-row items-center gap-2.5">
               <Image
-                accessibilityLabel="Mock-App icon"
-                source={require('@/assets/images/icon-3.jpg')}
-                style={styles.brandMark}
+                accessibilityLabel="Cleaning-App icon"
+                source={require('@/assets/images/cleaning-app-icon.jpg')}
+                style={{
+                  width: 30,
+                  height: 30,
+                  borderWidth: 1,
+                  borderColor: Palette.primary,
+                  borderRadius: 6,
+                }}
+                resizeMode="contain"
               />
-              <Text style={styles.brandName}>Mock-App</Text>
+              <Text className="text-xs font-extrabold tracking-[1.4px] text-[#263D36]">
+                Cleaning-App
+              </Text>
             </View>
 
-            <View style={styles.intro}>
-              <Text style={styles.eyebrow}>Login Page</Text>
-              <Text style={styles.title}>{'Welcome\nback!'}</Text>
-              <Text style={styles.subtitle}>Sign in to pick up where you left off.</Text>
+            <View className="mb-[34px]">
+              <Text className="mb-3 text-[11px] font-bold tracking-[1.5px] text-[#4A685E]">
+                Login Page
+              </Text>
+              <Text className="text-[42px] font-bold leading-[46px] text-[#263D36]">
+                {'Welcome\nback!'}
+              </Text>
+              <Text className="mt-3 text-[15px] leading-[22px] text-[#4A685E]">
+                Sign in to pick up where you left off.
+              </Text>
             </View>
 
-            <View style={styles.form}>
-              <View style={styles.fieldGroup}>
-                <Text style={styles.label}>Username</Text>
+            <View className="gap-5">
+              <View className="gap-2">
+                <Text className="text-[13px] font-semibold text-[#263D36]">Username</Text>
                 <TextInput
                   accessibilityLabel="Username"
                   autoCapitalize="none"
@@ -70,15 +84,15 @@ export default function HomeScreen() {
                   placeholder="Your username"
                   placeholderTextColor={Palette.muted}
                   returnKeyType="next"
-                  style={styles.input}
+                  className="h-[54px] rounded-lg border border-[#659287] bg-white px-4 text-[15px] text-[#263D36]"
                   textContentType="username"
                   value={username}
                 />
               </View>
 
-              <View style={styles.fieldGroup}>
-                <Text style={styles.label}>Password</Text>
-                <View style={styles.passwordField}>
+              <View className="gap-2">
+                <Text className="text-[13px] font-semibold text-[#263D36]">Password</Text>
+                <View className="h-[54px] flex-row items-center rounded-lg border border-[#659287] bg-white">
                   <TextInput
                     accessibilityLabel="Password"
                     onChangeText={(value) => {
@@ -90,7 +104,7 @@ export default function HomeScreen() {
                     placeholderTextColor={Palette.muted}
                     returnKeyType="done"
                     secureTextEntry={!passwordVisible}
-                    style={styles.passwordInput}
+                    className="h-full flex-1 px-4 text-[15px] text-[#263D36]"
                     textContentType="password"
                     value={password}
                   />
@@ -98,31 +112,40 @@ export default function HomeScreen() {
                     accessibilityLabel={passwordVisible ? 'Hide password' : 'Show password'}
                     accessibilityRole="button"
                     onPress={() => setPasswordVisible(!passwordVisible)}
-                    style={styles.visibilityButton}>
-                    <Text style={styles.visibilityText}>{passwordVisible ? 'Hide' : 'Show'}</Text>
+                    className="h-full min-w-14 items-center justify-center">
+                    <Text className="text-[13px] font-bold text-[#263D36]">
+                      {passwordVisible ? 'Hide' : 'Show'}
+                    </Text>
                   </Pressable>
                 </View>
               </View>
 
               <Pressable accessibilityRole="button" onPress={handleSignIn}>
                 {({ pressed }) => (
-                  <View style={[styles.submitButton, pressed && styles.submitPressed]}>
-                    <Text style={styles.submitText}>Sign in</Text>
-                    <Text style={styles.submitArrow}>→</Text>
+                  <View
+                    className={`mt-1 h-14 w-full flex-shrink-0 flex-row items-center justify-between rounded-lg bg-[#263D36] px-[18px] ${
+                      pressed ? 'opacity-[0.85]' : ''
+                    }`}>
+                    <Text className="flex-shrink-0 text-[15px] font-bold text-white">
+                      Sign in
+                    </Text>
+                    <Text className="flex-shrink-0 text-[21px] text-[#FFDDB0]">→</Text>
                   </View>
                 )}
-                </Pressable>
+              </Pressable>
 
               {message ? (
-                <Text accessibilityLiveRegion="polite" style={styles.message}>
+                <Text
+                  accessibilityLiveRegion="polite"
+                  className="-mt-2 text-[13px] leading-[19px] text-[#4A685E]">
                   {message}
                 </Text>
               ) : null}
             </View>
 
-            <View style={styles.footer}>
-              <View style={styles.footerRule} />
-              <Text style={styles.footerText}>Lets keep practicing!</Text>
+            <View className="mt-8 flex-row items-center gap-3">
+              <View className="h-0.5 w-7 bg-[#FFDDB0]" />
+              <Text className="text-xs text-[#4A685E]">Lets keep practicing!</Text>
             </View>
           </View>
         </ScrollView>
@@ -130,168 +153,3 @@ export default function HomeScreen() {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  flex: {
-    flex: 1,
-  },
-  safeArea: {
-    flex: 1,
-    backgroundColor: Palette.background,
-  },
-  scrollContent: {
-    flexGrow: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 24,
-    paddingVertical: 20,
-  },
-  content: {
-    width: '100%',
-    maxWidth: 420,
-    alignSelf: 'center',
-  },
-  brandRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
-    marginBottom: 32,
-  },
-  brandMark: {
-    width: 32,
-    height: 32,
-    borderWidth: 1,
-    borderColor: Palette.primary,
-    borderRadius: 8,
-    resizeMode: 'cover',
-  },
-  brandName: {
-    color: Palette.ink,
-    fontSize: 12,
-    fontWeight: '800',
-    letterSpacing: 1.4,
-  },
-  intro: {
-    marginBottom: 34,
-  },
-  eyebrow: {
-    color: Palette.muted,
-    fontSize: 11,
-    fontWeight: '700',
-    letterSpacing: 1.5,
-    marginBottom: 12,
-  },
-  title: {
-    color: Palette.ink,
-    fontSize: 42,
-    fontWeight: '700',
-    lineHeight: 46,
-  },
-  subtitle: {
-    color: Palette.muted,
-    fontSize: 15,
-    lineHeight: 22,
-    marginTop: 12,
-  },
-  form: {
-    gap: 20,
-  },
-  fieldGroup: {
-    gap: 8,
-  },
-  label: {
-    color: Palette.ink,
-    fontSize: 13,
-    fontWeight: '600',
-  },
-  input: {
-    height: 54,
-    borderWidth: 1,
-    borderColor: Palette.primary,
-    borderRadius: 8,
-    backgroundColor: Palette.input,
-    color: Palette.ink,
-    fontSize: 15,
-    paddingHorizontal: 16,
-  },
-  passwordField: {
-    height: 54,
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: Palette.primary,
-    borderRadius: 8,
-    backgroundColor: Palette.input,
-  },
-  passwordInput: {
-    flex: 1,
-    height: '100%',
-    color: Palette.ink,
-    fontSize: 15,
-    paddingHorizontal: 16,
-  },
-  visibilityButton: {
-    minWidth: 56,
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  visibilityText: {
-    color: Palette.ink,
-    fontSize: 13,
-    fontWeight: '700',
-  },
-  submitButton: {
-    height: 56,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginTop: 4,
-    backgroundColor: Palette.ink,
-    borderRadius: 8,
-    width: '100%',
-    flexShrink: 0,
-    paddingHorizontal: 18,
-  },
-  submitContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexWrap: 'nowrap',
-    gap: 8,
-  },
-  submitPressed: {
-    opacity: 0.85,
-  },
-  submitText: {
-    color: '#ffffff',
-    fontSize: 15,
-    fontWeight: '700',
-    flexShrink: 0,
-  },
-  submitArrow: {
-    color: Palette.accent,
-    fontSize: 21,
-    flexShrink: 0,
-  },
-  message: {
-    color: Palette.muted,
-    fontSize: 13,
-    lineHeight: 19,
-    marginTop: -8,
-  },
-  footer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-    marginTop: 32,
-  },
-  footerRule: {
-    width: 28,
-    height: 2,
-    backgroundColor: Palette.accent,
-  },
-  footerText: {
-    color: Palette.muted,
-    fontSize: 12,
-  },
-});

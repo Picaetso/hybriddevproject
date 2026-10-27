@@ -5,7 +5,6 @@ import {
   Pressable,
   ScrollView,
   Share,
-  StyleSheet,
   Text,
   TextInput,
   View,
@@ -125,31 +124,31 @@ export default function ServiceDetailsScreen() {
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
 
   return (
-    <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right', 'bottom']}>
-      <View style={styles.screen}>
-        <View style={styles.header}>
+    <SafeAreaView className="flex-1 bg-[#E6F2DD]" edges={['top', 'left', 'right', 'bottom']}>
+      <View className="flex-1 bg-[#E6F2DD]">
+        <View className="min-h-[62px] flex-row items-center justify-between gap-2 px-4">
           <Pressable
             accessibilityLabel="Go back"
             accessibilityRole="button"
             onPress={() => router.back()}
-            style={styles.headerButton}>
-            <Text style={styles.headerIcon}>‹</Text>
+            className="h-[42px] w-[42px] items-center justify-center rounded-full bg-white shadow-sm">
+            <Text className="mt-[-4px] text-[34px] leading-[38px] text-[#263D36]">‹</Text>
           </Pressable>
-          <Text style={styles.headerTitle}>Professional Details</Text>
-          <View style={styles.headerActions}>
+          <Text className="flex-1 text-center text-lg font-bold text-[#263D36]">Professional Details</Text>
+          <View className="flex-row gap-2">
             <Pressable
               accessibilityLabel="Share service"
               accessibilityRole="button"
               onPress={() => Share.share({ message: `${service} service on Sproutly` })}
-              style={styles.headerButton}>
-              <Text style={styles.smallHeaderIcon}>↗</Text>
+              className="h-[42px] w-[42px] items-center justify-center rounded-full bg-white shadow-sm">
+              <Text className="text-[21px] font-semibold text-[#263D36]">↗</Text>
             </Pressable>
             <Pressable
               accessibilityLabel={saved ? 'Remove bookmark' : 'Save service'}
               accessibilityRole="button"
               onPress={() => setSaved((value) => !value)}
-              style={styles.headerButton}>
-              <Text style={[styles.smallHeaderIcon, saved && styles.selectedBookmark]}>
+              className="h-[42px] w-[42px] items-center justify-center rounded-full bg-white shadow-sm">
+              <Text className={`text-[21px] font-semibold ${saved ? 'text-[#38645A]' : 'text-[#263D36]'}`}>
                 {saved ? '♥' : '♡'}
               </Text>
             </Pressable>
@@ -157,120 +156,120 @@ export default function ServiceDetailsScreen() {
         </View>
 
         <ScrollView
-          contentContainerStyle={styles.scrollContent}
+          contentContainerClassName="gap-3.5 px-4 pt-1 pb-[180px]"
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}>
-          <View style={styles.card}>
-            <View style={styles.profileRow}>
-              <View style={styles.avatarWrap}>
+          <View className="rounded-3xl border border-[#88BDA4]/25 bg-white p-[18px] shadow-sm">
+            <View className="flex-row items-center gap-3.5">
+              <View className="relative">
                 <Image
                   accessibilityLabel="Service professional Elena Rostova"
                   source={{
                     uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA-5OYSVr6TszF-yZsGuWSKUJMy4agSHpqOzWjE3Lo9O3JZJi0YvWrdi27Y9iXMO22ot9XNot2wEqM3h-VCf-OVAFUpm6zDsJCEkkL0JU2DJM3VPu4ZS3LkEG3Fms0mVYLHyE-jPKtIpT-XbL4nndx8y5eA4AxJtY8dTGmK7VpXtPrTOz-2K0bEaO0otBY6PDgJe5Q4vsF27vxNu38RUaBQnRwwVaWnwVyPjJMVtc7X_LIPoaRfn1iQSg',
                   }}
-                  style={styles.avatar}
+                  className="h-[72px] w-[72px] rounded-[20px] bg-[#DFFAEE]"
                 />
-                <View style={styles.verifiedBadge}>
-                  <Text style={styles.verifiedText}>✓</Text>
+                <View className="absolute right-[-4px] bottom-[-4px] h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-[#38645A]">
+                  <Text className="text-[13px] font-extrabold text-white">✓</Text>
                 </View>
               </View>
-              <View style={styles.profileInfo}>
-                <View style={styles.badgeRow}>
-                  <Text style={styles.ratingBadge}>★ 4.9 (128)</Text>
-                  <Text style={styles.topRatedBadge}>Top Rated</Text>
+              <View className="flex-1 gap-1">
+                <View className="flex-row flex-wrap gap-1.5">
+                  <Text className="overflow-hidden rounded-xl bg-[#FFDDB0] px-[9px] py-1 text-[11px] font-bold text-[#263D36]">★ 4.9 (128)</Text>
+                  <Text className="overflow-hidden rounded-xl bg-[#D9F4E9] px-[9px] py-1 text-[11px] font-semibold text-[#396C57]">Top Rated</Text>
                 </View>
-                <Text style={styles.providerName}>Elena Rostova</Text>
-                <Text style={styles.mutedText}>{service} Specialist</Text>
+                <Text className="text-[17px] font-bold text-[#263D36]">Elena Rostova</Text>
+                <Text className="text-xs leading-[18px] text-[#4A685E]">{service} Specialist</Text>
               </View>
             </View>
 
-            <View style={styles.credentials}>
-              <View style={styles.credential}>
-                <Text style={styles.credentialTitle}>5+ Years</Text>
-                <Text style={styles.credentialCaption}>Master Pro</Text>
+            <View className="mt-4 flex-row gap-2 border-t border-[#88BDA4]/20 pt-3">
+              <View className="flex-1 rounded-xl bg-[#E6F2DD]/65 p-2.5">
+                <Text className="text-xs font-bold text-[#263D36]">5+ Years</Text>
+                <Text className="mt-0.5 text-[10px] text-[#4A685E]">Master Pro</Text>
               </View>
-              <View style={styles.credential}>
-                <Text style={styles.credentialTitle}>Checked</Text>
-                <Text style={styles.credentialCaption}>Police Verified</Text>
+              <View className="flex-1 rounded-xl bg-[#E6F2DD]/65 p-2.5">
+                <Text className="text-xs font-bold text-[#263D36]">Checked</Text>
+                <Text className="mt-0.5 text-[10px] text-[#4A685E]">Police Verified</Text>
               </View>
             </View>
-            <View style={styles.rateBanner}>
+            <View className="mt-3 flex-row items-center justify-between rounded-2xl border border-[#88BDA4]/30 bg-[#DFFAEE] p-3">
               <View>
-                <Text style={styles.mutedText}>Hourly Rate</Text>
-                <Text style={styles.rate}>$35<Text style={styles.rateUnit}>/hour</Text></Text>
+                <Text className="text-xs leading-[18px] text-[#4A685E]">Hourly Rate</Text>
+                <Text className="text-[23px] font-extrabold text-[#263D36]">$35<Text className="text-xs font-normal text-[#4A685E]">/hour</Text></Text>
               </View>
-              <View style={styles.alignRight}>
-                <Text style={styles.mutedText}>Package deal</Text>
-                <Text style={styles.packageRate}>$120 / 3-Bed</Text>
+              <View className="items-end">
+                <Text className="text-xs leading-[18px] text-[#4A685E]">Package deal</Text>
+                <Text className="text-xs font-bold text-[#38645A]">$120 / 3-Bed</Text>
               </View>
             </View>
           </View>
 
-          <View style={styles.card}>
-            <Text style={styles.sectionTitle}>Service Highlights</Text>
-            <Text style={[styles.mutedText, styles.sectionSubtitle]}>
+          <View className="rounded-3xl border border-[#88BDA4]/25 bg-white p-[18px] shadow-sm">
+            <Text className="text-[17px] font-bold text-[#263D36]">Service Highlights</Text>
+            <Text className="mt-1 text-xs leading-[18px] text-[#4A685E]">
               {serviceHighlights[service]}
             </Text>
-            <View style={styles.chips}>
-              <Text style={styles.chip}>♧ Eco-Friendly Supplies</Text>
-              <Text style={styles.chip}>Pet Safe</Text>
-              <Text style={styles.chip}>Equipment Provided</Text>
-              <Text style={styles.chip}>Insured & Bonded</Text>
+            <View className="mt-3.5 mb-3.5 flex-row flex-wrap gap-[7px]">
+              <Text className="overflow-hidden rounded-[18px] border border-[#88BDA4]/35 bg-[#E6F2DD] px-2.5 py-1.5 text-[11px] font-semibold text-[#263D36]">♧ Eco-Friendly Supplies</Text>
+              <Text className="overflow-hidden rounded-[18px] border border-[#88BDA4]/35 bg-[#E6F2DD] px-2.5 py-1.5 text-[11px] font-semibold text-[#263D36]">Pet Safe</Text>
+              <Text className="overflow-hidden rounded-[18px] border border-[#88BDA4]/35 bg-[#E6F2DD] px-2.5 py-1.5 text-[11px] font-semibold text-[#263D36]">Equipment Provided</Text>
+              <Text className="overflow-hidden rounded-[18px] border border-[#88BDA4]/35 bg-[#E6F2DD] px-2.5 py-1.5 text-[11px] font-semibold text-[#263D36]">Insured & Bonded</Text>
             </View>
-            <View style={styles.inclusionsHeading}>
-              <Text style={styles.inclusionsTitle}>What&apos;s Included</Text>
-              <Text style={styles.packageRate}>Full service</Text>
+            <View className="mb-2 flex-row items-center justify-between">
+              <Text className="text-sm font-bold text-[#263D36]">What&apos;s Included</Text>
+              <Text className="text-xs font-bold text-[#38645A]">Full service</Text>
             </View>
             {serviceInclusions[service].map((inclusion) => (
-              <View key={inclusion} style={styles.inclusionRow}>
-                <Text style={styles.checkmark}>✓</Text>
-                <Text style={styles.inclusionText}>{inclusion}</Text>
+              <View key={inclusion} className="mt-[7px] flex-row items-center gap-2.5 rounded-xl border border-[#88BDA4]/20 bg-[#E6F2DD]/50 p-2.5">
+                <Text className="text-lg font-extrabold text-[#38645A]">✓</Text>
+                <Text className="flex-1 text-[13px] leading-[19px] text-[#263D36]">{inclusion}</Text>
               </View>
             ))}
           </View>
 
-          <View style={styles.card}>
-            <View style={styles.sectionHeadingRow}>
+          <View className="rounded-3xl border border-[#88BDA4]/25 bg-white p-[18px] shadow-sm">
+            <View className="mb-3 flex-row items-center justify-between gap-3">
               <View>
-                <Text style={styles.sectionTitle}>Select Schedule</Text>
-                <Text style={styles.mutedText}>Pick your preferred appointment</Text>
+                <Text className="text-[17px] font-bold text-[#263D36]">Select Schedule</Text>
+                <Text className="text-xs leading-[18px] text-[#4A685E]">Pick your preferred appointment</Text>
               </View>
-              <Text style={styles.calendarIcon}>▦</Text>
+              <Text className="text-2xl text-[#38645A]">▦</Text>
             </View>
-            <Text style={styles.fieldLabel}>AVAILABLE DATES</Text>
-            <View style={styles.dateRow}>
+            <Text className="mt-3 mb-2 text-[10px] font-extrabold tracking-[1px] text-[#4A685E]">AVAILABLE DATES</Text>
+            <View className="flex-row gap-2">
               {dates.map((date, index) => (
                 <Pressable
                   key={`${date.month}-${date.date}`}
                   accessibilityRole="button"
                   accessibilityState={{ selected: selectedDate === index }}
                   onPress={() => setSelectedDate(index)}
-                  style={[styles.dateOption, selectedDate === index && styles.selectedOption]}>
-                  <Text style={[styles.dateDay, selectedDate === index && styles.selectedSubtext]}>
+                  className={`min-w-0 flex-1 items-center justify-center rounded-[15px] border px-1 py-2.5 ${selectedDate === index ? 'border-[#659287] bg-[#659287]' : 'border-[#88BDA4]/30 bg-[#DFFAEE]'}`}>
+                  <Text className={`text-[10px] font-semibold ${selectedDate === index ? 'text-[#D6E8D3]' : 'text-[#4A685E]'}`}>
                     {date.day}
                   </Text>
-                  <Text style={[styles.dateNumber, selectedDate === index && styles.selectedText]}>
+                  <Text className={`my-0.5 text-[21px] font-extrabold ${selectedDate === index ? 'text-white' : 'text-[#263D36]'}`}>
                     {date.date}
                   </Text>
-                  <Text style={[styles.dateMonth, selectedDate === index && styles.selectedSubtext]}>
+                  <Text className={`text-[9px] font-semibold ${selectedDate === index ? 'text-[#D6E8D3]' : 'text-[#4A685E]'}`}>
                     {date.label}
                   </Text>
                 </Pressable>
               ))}
             </View>
-            <Text style={styles.fieldLabel}>ARRIVAL WINDOW</Text>
-            <View style={styles.timeRow}>
+            <Text className="mt-3 mb-2 text-[10px] font-extrabold tracking-[1px] text-[#4A685E]">ARRIVAL WINDOW</Text>
+            <View className="flex-row gap-[7px]">
               {availableTimes.map((slot, index) => (
                 <Pressable
                   key={slot.time}
                   accessibilityRole="button"
                   accessibilityState={{ selected: selectedTime === index }}
                   onPress={() => setSelectedTime(index)}
-                  style={[styles.timeOption, selectedTime === index && styles.selectedOption]}>
-                  <Text style={[styles.timeLabel, selectedTime === index && styles.selectedSubtext]}>
+                  className={`flex-1 items-center justify-center rounded-xl border px-1 py-2.5 ${selectedTime === index ? 'border-[#659287] bg-[#659287]' : 'border-[#88BDA4]/30 bg-[#DFFAEE]'}`}>
+                  <Text className={`text-[9px] ${selectedTime === index ? 'text-[#D6E8D3]' : 'text-[#4A685E]'}`}>
                     {slot.label}
                   </Text>
-                  <Text style={[styles.timeValue, selectedTime === index && styles.selectedText]}>
+                  <Text className={`mt-[3px] text-[11px] font-bold ${selectedTime === index ? 'text-white' : 'text-[#263D36]'}`}>
                     {slot.time}
                   </Text>
                 </Pressable>
@@ -278,82 +277,82 @@ export default function ServiceDetailsScreen() {
             </View>
           </View>
 
-          <View style={styles.card}>
-            <View style={styles.sectionHeadingRow}>
-              <Text style={styles.sectionTitle}>Service Location</Text>
+          <View className="rounded-3xl border border-[#88BDA4]/25 bg-white p-[18px] shadow-sm">
+            <View className="mb-3 flex-row items-center justify-between gap-3">
+              <Text className="text-[17px] font-bold text-[#263D36]">Service Location</Text>
               <Pressable onPress={() => setInstructions('')}>
-                <Text style={styles.packageRate}>Edit notes</Text>
+                <Text className="text-xs font-bold text-[#38645A]">Edit notes</Text>
               </Pressable>
             </View>
-            <View style={styles.addressBox}>
-              <Text style={styles.locationIcon}>⌖</Text>
-              <View style={styles.addressText}>
-                <Text style={styles.addressTitle}>142 Greenview Lane, Apt 4B</Text>
-                <Text style={styles.mutedText}>Primary Residence · 4th Floor with Elevator</Text>
+            <View className="mt-1 flex-row items-center gap-3 rounded-2xl border border-[#88BDA4]/30 bg-[#E6F2DD]/55 p-3">
+              <Text className="h-[38px] w-[38px] rounded-xl bg-white text-center text-[22px] leading-[38px] text-[#38645A]">🖈</Text>
+              <View className="flex-1">
+                <Text className="mb-0.5 text-xs font-bold text-[#263D36]">142 Greenview Lane, Apt 4B</Text>
+                <Text className="text-xs leading-[18px] text-[#4A685E]">Primary Residence · 4th Floor with Elevator</Text>
               </View>
             </View>
-            <Text style={styles.fieldLabel}>SPECIAL INSTRUCTIONS / ENTRY NOTES</Text>
+            <Text className="mt-3 mb-2 text-[10px] font-extrabold tracking-[1px] text-[#4A685E]">SPECIAL INSTRUCTIONS / ENTRY NOTES</Text>
             <TextInput
               accessibilityLabel="Special instructions"
               onChangeText={setInstructions}
               placeholder="Gate code, pets inside, parking details"
               placeholderTextColor="#71847d"
-              style={styles.instructionsInput}
+              className="min-h-12 rounded-[14px] border border-[#88BDA4]/45 px-3 py-2.5 text-[13px] text-[#263D36]"
               value={instructions}
             />
           </View>
 
-          <View style={styles.card}>
-            <Text style={styles.sectionTitle}>Payment Summary</Text>
-            <View style={styles.summaryRow}>
-              <Text style={styles.mutedText}>{service} (3 hrs estimated)</Text>
-              <Text style={styles.summaryValue}>$105.00</Text>
+          <View className="rounded-3xl border border-[#88BDA4]/25 bg-white p-[18px] shadow-sm">
+            <Text className="text-[17px] font-bold text-[#263D36]">Payment Summary</Text>
+            <View className="mt-3 flex-row items-center justify-between gap-3">
+              <Text className="text-xs leading-[18px] text-[#4A685E]">{service} (3 hrs estimated)</Text>
+              <Text className="text-[13px] font-semibold text-[#263D36]">$105.00</Text>
             </View>
-            <View style={styles.summaryRow}>
-              <Text style={styles.mutedText}>Service supplies · Complimentary</Text>
-              <Text style={styles.packageRate}>$0.00</Text>
+            <View className="mt-3 flex-row items-center justify-between gap-3">
+              <Text className="text-xs leading-[18px] text-[#4A685E]">Service supplies · Complimentary</Text>
+              <Text className="text-xs font-bold text-[#38645A]">$0.00</Text>
             </View>
-            <View style={styles.summaryRow}>
-              <Text style={styles.mutedText}>Platform service fee</Text>
-              <Text style={styles.summaryValue}>$4.50</Text>
+            <View className="mt-3 flex-row items-center justify-between gap-3">
+              <Text className="text-xs leading-[18px] text-[#4A685E]">Platform service fee</Text>
+              <Text className="text-[13px] font-semibold text-[#263D36]">$4.50</Text>
             </View>
-            <View style={styles.summaryRow}>
-              <Text style={styles.packageRate}>Promo code: FRESH25</Text>
-              <Text style={styles.packageRate}>-$15.00</Text>
+            <View className="mt-3 flex-row items-center justify-between gap-3">
+              <Text className="text-xs font-bold text-[#38645A]">Promo code: FRESH25</Text>
+              <Text className="text-xs font-bold text-[#38645A]">-$15.00</Text>
             </View>
-            <View style={styles.totalRow}>
+            <View className="mt-3.5 flex-row items-center justify-between border-t border-[#88BDA4]/25 pt-3">
               <View>
-                <Text style={styles.inclusionsTitle}>Total Amount</Text>
-                <Text style={styles.mutedText}>Taxes & insurance included</Text>
+                <Text className="text-sm font-bold text-[#263D36]">Total Amount</Text>
+                <Text className="text-xs leading-[18px] text-[#4A685E]">Taxes & insurance included</Text>
               </View>
-              <Text style={styles.totalAmount}>$94.50</Text>
+              <Text className="text-2xl font-extrabold text-[#263D36]">$94.50</Text>
             </View>
-            <Text style={styles.guarantee}>
+            <Text className="mt-3.5 rounded-xl bg-[#E6F2DD] p-2.5 text-[11px] leading-[17px] text-[#263D36]">
               ✓ 100% Domestic Guarantee: Free re-service if you are not satisfied within 24 hours.
             </Text>
           </View>
         </ScrollView>
 
-        <View style={styles.bookingBar}>
+        <View className="absolute right-0 bottom-0 left-0 gap-2 rounded-t-3xl border-t border-[#88BDA4]/25 bg-white/95 px-[18px] pt-3 pb-5">
           {bookingConfirmed ? (
-            <Text style={styles.confirmation}>
+            <Text className="text-center text-xs font-semibold text-[#38645A]">
               Slot selected: {dates[selectedDate].day}, {dates[selectedDate].month}{' '}
               {dates[selectedDate].date} at {availableTimes[selectedTime].time}
             </Text>
           ) : null}
-          <View style={styles.bookingRow}>
+          <View className="flex-row items-center justify-between gap-3">
             <View>
-              <Text style={styles.mutedText}>Total Price</Text>
-              <Text style={styles.bookingPrice}>$94.50</Text>
+              <Text className="text-xs leading-[18px] text-[#4A685E]">Total Price</Text>
+              <Text className="text-[22px] font-extrabold text-[#263D36]">$94.50</Text>
             </View>
             <Pressable
               accessibilityRole="button"
               onPress={() => setBookingConfirmed(true)}
-              style={styles.bookButton}>
-              <Text style={styles.bookButtonText}>
+              className="min-h-[52px] flex-1 flex-row items-center justify-center gap-2 rounded-[28px] bg-[#659287] px-3">
+              <Text className="text-sm font-bold text-white">
                 {bookingConfirmed ? 'Slot Selected' : 'Confirm & Book Slot'}
               </Text>
-              <Text style={styles.bookArrow}>→</Text>
+              <Text className="text-[19px] font-bold text-white">→</Text>
             </Pressable>
           </View>
         </View>
@@ -361,474 +360,3 @@ export default function ServiceDetailsScreen() {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: '#E6F2DD',
-  },
-  screen: {
-    flex: 1,
-    backgroundColor: '#E6F2DD',
-  },
-  header: {
-    minHeight: 62,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    gap: 8,
-  },
-  headerButton: {
-    width: 42,
-    height: 42,
-    borderRadius: 21,
-    backgroundColor: '#ffffff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: '#263D36',
-    shadowOpacity: 0.08,
-    shadowRadius: 8,
-    elevation: 2,
-  },
-  headerIcon: {
-    color: '#263D36',
-    fontSize: 34,
-    lineHeight: 38,
-    marginTop: -4,
-  },
-  smallHeaderIcon: {
-    color: '#263D36',
-    fontSize: 21,
-    fontWeight: '600',
-  },
-  selectedBookmark: {
-    color: '#38645a',
-  },
-  headerTitle: {
-    color: '#263D36',
-    fontSize: 18,
-    fontWeight: '700',
-    flex: 1,
-    textAlign: 'center',
-  },
-  headerActions: {
-    flexDirection: 'row',
-    gap: 8,
-  },
-  scrollContent: {
-    paddingHorizontal: 16,
-    paddingTop: 4,
-    paddingBottom: 180,
-    gap: 14,
-  },
-  card: {
-    padding: 18,
-    borderRadius: 24,
-    backgroundColor: '#ffffff',
-    borderWidth: 1,
-    borderColor: 'rgba(136, 189, 164, 0.25)',
-    shadowColor: '#263D36',
-    shadowOpacity: 0.06,
-    shadowRadius: 12,
-    elevation: 2,
-  },
-  profileRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 14,
-  },
-  avatarWrap: {
-    position: 'relative',
-  },
-  avatar: {
-    width: 72,
-    height: 72,
-    borderRadius: 20,
-    backgroundColor: '#DFFAEE',
-  },
-  verifiedBadge: {
-    position: 'absolute',
-    right: -4,
-    bottom: -4,
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    backgroundColor: '#38645a',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 2,
-    borderColor: '#ffffff',
-  },
-  verifiedText: {
-    color: '#ffffff',
-    fontSize: 13,
-    fontWeight: '800',
-  },
-  profileInfo: {
-    flex: 1,
-    gap: 4,
-  },
-  badgeRow: {
-    flexDirection: 'row',
-    gap: 6,
-    flexWrap: 'wrap',
-  },
-  ratingBadge: {
-    overflow: 'hidden',
-    borderRadius: 12,
-    paddingHorizontal: 9,
-    paddingVertical: 4,
-    backgroundColor: '#FFDDB0',
-    color: '#263D36',
-    fontSize: 11,
-    fontWeight: '700',
-  },
-  topRatedBadge: {
-    overflow: 'hidden',
-    borderRadius: 12,
-    paddingHorizontal: 9,
-    paddingVertical: 4,
-    backgroundColor: '#D9F4E9',
-    color: '#396c57',
-    fontSize: 11,
-    fontWeight: '600',
-  },
-  providerName: {
-    color: '#263D36',
-    fontSize: 17,
-    fontWeight: '700',
-  },
-  mutedText: {
-    color: '#4A685E',
-    fontSize: 12,
-    lineHeight: 18,
-  },
-  credentials: {
-    flexDirection: 'row',
-    gap: 8,
-    borderTopWidth: 1,
-    borderTopColor: 'rgba(136, 189, 164, 0.2)',
-    marginTop: 16,
-    paddingTop: 12,
-  },
-  credential: {
-    flex: 1,
-    backgroundColor: 'rgba(230, 242, 221, 0.65)',
-    borderRadius: 12,
-    padding: 10,
-  },
-  credentialTitle: {
-    color: '#263D36',
-    fontSize: 12,
-    fontWeight: '700',
-  },
-  credentialCaption: {
-    color: '#4A685E',
-    fontSize: 10,
-    marginTop: 2,
-  },
-  rateBanner: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#DFFAEE',
-    borderWidth: 1,
-    borderColor: 'rgba(136, 189, 164, 0.3)',
-    borderRadius: 16,
-    padding: 12,
-    marginTop: 12,
-  },
-  rate: {
-    color: '#263D36',
-    fontSize: 23,
-    fontWeight: '800',
-  },
-  rateUnit: {
-    color: '#4A685E',
-    fontSize: 12,
-    fontWeight: '400',
-  },
-  alignRight: {
-    alignItems: 'flex-end',
-  },
-  packageRate: {
-    color: '#38645a',
-    fontSize: 12,
-    fontWeight: '700',
-  },
-  sectionTitle: {
-    color: '#263D36',
-    fontSize: 17,
-    fontWeight: '700',
-  },
-  sectionSubtitle: {
-    marginTop: 4,
-  },
-  chips: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 7,
-    marginTop: 14,
-    marginBottom: 14,
-  },
-  chip: {
-    overflow: 'hidden',
-    backgroundColor: '#E6F2DD',
-    color: '#263D36',
-    borderColor: 'rgba(136, 189, 164, 0.35)',
-    borderWidth: 1,
-    borderRadius: 18,
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    fontSize: 11,
-    fontWeight: '600',
-  },
-  inclusionsHeading: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 8,
-  },
-  inclusionsTitle: {
-    color: '#263D36',
-    fontSize: 14,
-    fontWeight: '700',
-  },
-  inclusionRow: {
-    flexDirection: 'row',
-    gap: 10,
-    alignItems: 'center',
-    borderRadius: 12,
-    backgroundColor: 'rgba(230, 242, 221, 0.5)',
-    borderWidth: 1,
-    borderColor: 'rgba(136, 189, 164, 0.18)',
-    padding: 10,
-    marginTop: 7,
-  },
-  checkmark: {
-    color: '#38645a',
-    fontSize: 18,
-    fontWeight: '800',
-  },
-  inclusionText: {
-    flex: 1,
-    color: '#263D36',
-    fontSize: 13,
-    lineHeight: 19,
-  },
-  sectionHeadingRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    gap: 12,
-    marginBottom: 12,
-  },
-  calendarIcon: {
-    color: '#38645a',
-    fontSize: 24,
-  },
-  fieldLabel: {
-    color: '#4A685E',
-    fontSize: 10,
-    fontWeight: '800',
-    letterSpacing: 1,
-    marginTop: 12,
-    marginBottom: 8,
-  },
-  dateRow: {
-    flexDirection: 'row',
-    gap: 8,
-  },
-  dateOption: {
-    flex: 1,
-    minWidth: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#DFFAEE',
-    borderColor: 'rgba(136, 189, 164, 0.3)',
-    borderWidth: 1,
-    borderRadius: 15,
-    paddingVertical: 10,
-    paddingHorizontal: 4,
-  },
-  selectedOption: {
-    backgroundColor: '#659287',
-    borderColor: '#659287',
-  },
-  dateDay: {
-    color: '#4A685E',
-    fontSize: 10,
-    fontWeight: '600',
-  },
-  selectedSubtext: {
-    color: '#D6E8D3',
-  },
-  dateNumber: {
-    color: '#263D36',
-    fontSize: 21,
-    fontWeight: '800',
-    marginVertical: 2,
-  },
-  selectedText: {
-    color: '#ffffff',
-  },
-  dateMonth: {
-    color: '#4A685E',
-    fontSize: 9,
-    fontWeight: '600',
-  },
-  timeRow: {
-    flexDirection: 'row',
-    gap: 7,
-  },
-  timeOption: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#DFFAEE',
-    borderColor: 'rgba(136, 189, 164, 0.3)',
-    borderWidth: 1,
-    borderRadius: 12,
-    paddingVertical: 10,
-    paddingHorizontal: 4,
-  },
-  timeLabel: {
-    color: '#4A685E',
-    fontSize: 9,
-  },
-  timeValue: {
-    color: '#263D36',
-    fontSize: 11,
-    fontWeight: '700',
-    marginTop: 3,
-  },
-  addressBox: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-    padding: 12,
-    borderRadius: 16,
-    backgroundColor: 'rgba(230, 242, 221, 0.55)',
-    borderWidth: 1,
-    borderColor: 'rgba(136, 189, 164, 0.3)',
-    marginTop: 4,
-  },
-  locationIcon: {
-    width: 38,
-    height: 38,
-    lineHeight: 38,
-    borderRadius: 12,
-    backgroundColor: '#ffffff',
-    color: '#38645a',
-    textAlign: 'center',
-    fontSize: 22,
-  },
-  addressText: {
-    flex: 1,
-  },
-  addressTitle: {
-    color: '#263D36',
-    fontSize: 12,
-    fontWeight: '700',
-    marginBottom: 2,
-  },
-  instructionsInput: {
-    minHeight: 48,
-    borderRadius: 14,
-    borderWidth: 1,
-    borderColor: 'rgba(136, 189, 164, 0.45)',
-    paddingHorizontal: 12,
-    paddingVertical: 10,
-    color: '#263D36',
-    fontSize: 13,
-  },
-  summaryRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    gap: 12,
-    marginTop: 12,
-  },
-  summaryValue: {
-    color: '#263D36',
-    fontSize: 13,
-    fontWeight: '600',
-  },
-  totalRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    borderTopWidth: 1,
-    borderTopColor: 'rgba(136, 189, 164, 0.25)',
-    paddingTop: 12,
-    marginTop: 14,
-  },
-  totalAmount: {
-    color: '#263D36',
-    fontSize: 24,
-    fontWeight: '800',
-  },
-  guarantee: {
-    backgroundColor: '#E6F2DD',
-    color: '#263D36',
-    borderRadius: 12,
-    padding: 10,
-    marginTop: 14,
-    fontSize: 11,
-    lineHeight: 17,
-  },
-  bookingBar: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(255, 255, 255, 0.97)',
-    borderTopWidth: 1,
-    borderTopColor: 'rgba(136, 189, 164, 0.22)',
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
-    paddingHorizontal: 18,
-    paddingTop: 12,
-    paddingBottom: 20,
-    gap: 8,
-  },
-  confirmation: {
-    color: '#38645a',
-    fontSize: 12,
-    fontWeight: '600',
-    textAlign: 'center',
-  },
-  bookingRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: 12,
-  },
-  bookingPrice: {
-    color: '#263D36',
-    fontSize: 22,
-    fontWeight: '800',
-  },
-  bookButton: {
-    flex: 1,
-    minHeight: 52,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
-    backgroundColor: '#659287',
-    borderRadius: 28,
-    paddingHorizontal: 12,
-  },
-  bookButtonText: {
-    color: '#ffffff',
-    fontSize: 14,
-    fontWeight: '700',
-  },
-  bookArrow: {
-    color: '#ffffff',
-    fontSize: 19,
-    fontWeight: '700',
-  },
-});
