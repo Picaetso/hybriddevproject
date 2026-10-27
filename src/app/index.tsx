@@ -141,6 +141,16 @@ export default function HomeScreen() {
                   {message}
                 </Text>
               ) : null}
+
+              <View className="flex-row items-center justify-center gap-1">
+                <Text className="text-[13px] text-[#4A685E]">Don&apos;t have an account?</Text>
+                <Pressable
+                  accessibilityRole="link"
+                  onPress={() => router.push('/register')}
+                  className="p-1">
+                  <Text className="text-[13px] font-bold text-[#38645A]">Register</Text>
+                </Pressable>
+              </View>
             </View>
 
             <View className="mt-8 flex-row items-center gap-3">
