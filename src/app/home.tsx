@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import BottomNav from '@/components/BottomNav';
+
 const categories = [
   {
     name: 'Cleaning',
@@ -129,11 +131,21 @@ export default function HomeScreen() {
               <View className="min-w-0 flex-1">
                 <Text className="text-[11px] font-semibold text-[#4A685E]">Good morning, Alex 👋</Text>
                 <Pressable accessibilityRole="button" className="mt-0.5 flex-row items-center gap-1">
-                  <Text className="text-[17px] text-[#659287]">🖈</Text>
+                  <Image
+                    source={require('@/assets/expo.icon/Assets/location.png')}
+                    className="h-3 w-3"
+                    contentFit="contain"
+                    accessibilityLabel="Location"
+                  />
                   <Text numberOfLines={1} className="shrink text-[13px] font-bold text-[#263D36]">
                     142 Greenview Lane, Apt 4B
                   </Text>
-                  <Text className="text-[17px] text-[#4A685E]">⮟</Text>
+                  <Image
+                    source={require('@/assets/expo.icon/Assets/down.png')}
+                    className="h-3 w-3"
+                    contentFit="contain"
+                    accessibilityLabel="Down Arrow"
+                  />
                 </Pressable>
               </View>
             </View>
@@ -142,15 +154,25 @@ export default function HomeScreen() {
               accessibilityRole="button"
               className="ml-2 h-10 w-10 items-center justify-center rounded-full bg-white"
             >
-              <Text className="text-[22px] text-[#263D36]">♧</Text>
+              <Image
+                source={require('@/assets/expo.icon/Assets/settings.png')}
+                className="h-6 w-6"
+                contentFit="contain"
+                accessibilityLabel="Settings"
+              />
               <View className="absolute top-2 right-2 h-2.5 w-2.5 rounded-full border-2 border-white bg-[#FFDDB0]" />
             </Pressable>
           </View>
 
           <View className="gap-5 px-5 pt-1">
             <View className="flex-row items-center gap-2.5">
-              <View className="h-[50px] flex-1 flex-row items-center rounded-2xl border border-[#88BDA4]/30 bg-white px-[13px]">
-                <Text className="mr-2 text-2xl text-[#659287]">⌕</Text>
+              <View className="h-[50px] flex-1 flex-row items-center gap-2 rounded-2xl border border-[#88BDA4]/30 bg-white px-[13px]">
+                <Image
+                    source={require('@/assets/expo.icon/Assets/search.png')}
+                    className="h-3 w-3"
+                    contentFit="contain"
+                    accessibilityLabel="Search"
+                  />
                 <TextInput
                   accessibilityLabel="Search services"
                   placeholder={'Search "deep cleaning", "plumber"...'}
@@ -166,7 +188,13 @@ export default function HomeScreen() {
                 accessibilityRole="button"
                 className="h-[50px] w-[50px] items-center justify-center rounded-2xl bg-[#659287]"
               >
-                <Text className="text-[23px] text-white">☷</Text>
+                <Image
+                    source={require('@/assets/expo.icon/Assets/settings bar.png')}
+                    className="h-5 w-5"
+                    tintColor={'white'}
+                    contentFit="contain"
+                    accessibilityLabel="Home"
+                  />
               </Pressable>
             </View>
 
@@ -314,27 +342,7 @@ export default function HomeScreen() {
           </View>
         </ScrollView>
 
-        <View className="absolute right-0 bottom-0 left-0 min-h-[72px] flex-row items-center justify-around rounded-t-[18px] bg-white px-3 pt-2 pb-3 shadow-lg">
-          <Pressable accessibilityRole="button" className="min-w-[68px] items-center rounded-full bg-[#B5ECD1] px-3 py-1.5">
-            <Text className="text-[21px] leading-6 text-[#396C57]">⌂</Text>
-            <Text className="mt-0.5 text-[10px] font-bold text-[#396C57]">Home</Text>
-          </Pressable>
-          <Pressable accessibilityRole="button" className="min-w-16 items-center py-1.5">
-            <Text className="text-[21px] leading-6 text-[#4A685E]">▦</Text>
-            <Text className="mt-0.5 text-[10px] font-semibold text-[#4A685E]">Bookings</Text>
-          </Pressable>
-          <Pressable accessibilityRole="button" className="min-w-16 items-center py-1.5">
-            <View className="relative">
-              <Text className="text-[21px] leading-6 text-[#4A685E]">▢</Text>
-              <View className="absolute top-0 right-[-3px] h-2 w-2 rounded-full bg-[#659287]" />
-            </View>
-            <Text className="mt-0.5 text-[10px] font-semibold text-[#4A685E]">Messages</Text>
-          </Pressable>
-          <Pressable accessibilityRole="button" className="min-w-16 items-center py-1.5">
-            <Text className="text-[21px] leading-6 text-[#4A685E]">♙</Text>
-            <Text className="mt-0.5 text-[10px] font-semibold text-[#4A685E]">Profile</Text>
-          </Pressable>
-        </View>
+        <BottomNav active="home" floating />
       </View>
     </SafeAreaView>
   );

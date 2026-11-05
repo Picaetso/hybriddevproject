@@ -1,14 +1,13 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import {
-  Image,
   KeyboardAvoidingView,
   Platform,
   Pressable,
   ScrollView,
   Text,
   TextInput,
-  View,
+  View
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -39,27 +38,9 @@ export default function HomeScreen() {
           contentContainerClassName="flex-grow justify-center px-6 py-5"
           keyboardShouldPersistTaps="handled">
           <View className="w-full max-w-[420px] self-center">
-            <View className="mb-8 flex-row items-center gap-2.5">
-              <Image
-                accessibilityLabel="Cleaning-App icon"
-                source={require('@/assets/images/cleaning-app-icon.jpg')}
-                style={{
-                  width: 30,
-                  height: 30,
-                  borderWidth: 1,
-                  borderColor: Palette.primary,
-                  borderRadius: 6,
-                }}
-                resizeMode="contain"
-              />
-              <Text className="text-xs font-extrabold tracking-[1.4px] text-[#263D36]">
-                Cleaning-App
-              </Text>
-            </View>
-
             <View className="mb-[34px]">
               <Text className="mb-3 text-[11px] font-bold tracking-[1.5px] text-[#4A685E]">
-                Login Page
+                Cleaning-app
               </Text>
               <Text className="text-[42px] font-bold leading-[46px] text-[#263D36]">
                 {'Welcome\nback!'}
@@ -155,7 +136,7 @@ export default function HomeScreen() {
 
             <View className="mt-8 flex-row items-center gap-3">
               <View className="h-0.5 w-7 bg-[#FFDDB0]" />
-              <Text className="text-xs text-[#4A685E]">Lets keep practicing!</Text>
+              <Text className="text-xs text-[#4A685E]">Lets keep it clean!</Text>
             </View>
           </View>
         </ScrollView>
