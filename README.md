@@ -101,7 +101,7 @@ Ide aplikasi cleaning services ini saya dapatkan dari project bersama dosen yang
 Tabel pemetaan kebutuhan:
 | Kebutuhan | Halaman | Komponen |
 | --- | --- | --- |
-| Kemudahan memsan & penjadwalan | Home & detail layanan | Kartu layanan di home.tsx. Opsi pilihan tanggal dan waktu pemesanan di halaman detail layanan |
+| Kemudahan memesan & penjadwalan | Home & detail layanan | Kartu layanan di home.tsx dan opsi pilihan tanggal dan waktu pemesanan di halaman detail layanan |
 | Keamanan & kepercayaan | Detail layanan & profil | Rating dan logo verified pada profil penyedia layanan dan pengaturan keamanan di profil user |
 | Pembayaran praktis & transparan | Detail layanan | Bagian ringkasan pembayaran yang menampilkan billing secara rinci dan sesuai dengan angka akhir |
 | Manajemen komunikasi & pelacakan | Home & profil | Bagian upcoming services pada home yang bisa untuk memantau dan menghubungi layanan yang dipesan, serta help & live chat support pada profil |
