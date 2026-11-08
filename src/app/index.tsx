@@ -6,12 +6,14 @@ import {
   Pressable,
   ScrollView,
   Text,
-  TextInput,
   View
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { Palette } from '@/constants/theme';
+import AuthFooterLink from '@/components/AuthFooterLink';
+import AuthHeading from '@/components/AuthHeading';
+import FormField from '@/components/FormField';
+import PrimaryButton from '@/components/PrimaryButton';
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -38,82 +40,54 @@ export default function HomeScreen() {
           contentContainerClassName="flex-grow justify-center px-6 py-5"
           keyboardShouldPersistTaps="handled">
           <View className="w-full max-w-[420px] self-center">
-            <View className="mb-[34px]">
-              <Text className="mb-3 text-[11px] font-bold tracking-[1.5px] text-[#4A685E]">
-                Cleaning-app
-              </Text>
-              <Text className="text-[42px] font-bold leading-[46px] text-[#263D36]">
-                {'Welcome\nback!'}
-              </Text>
-              <Text className="mt-3 text-[15px] leading-[22px] text-[#4A685E]">
-                Sign in to pick up where you left off.
-              </Text>
-            </View>
+            <AuthHeading
+              eyebrow="Cleaning-app"
+              title={'Welcome\nback!'}
+              description="Sign in to pick up where you left off."
+            />
 
             <View className="gap-5">
-              <View className="gap-2">
-                <Text className="text-[13px] font-semibold text-[#263D36]">Username</Text>
-                <TextInput
-                  accessibilityLabel="Username"
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                  onChangeText={(value) => {
-                    setUsername(value);
-                    setMessage('');
-                  }}
-                  onSubmitEditing={handleSignIn}
-                  placeholder="Your username"
-                  placeholderTextColor={Palette.muted}
-                  returnKeyType="next"
-                  className="h-[54px] rounded-lg border border-[#659287] bg-white px-4 text-[15px] text-[#263D36]"
-                  textContentType="username"
-                  value={username}
-                />
-              </View>
+              <FormField
+                label="Username"
+                autoCapitalize="none"
+                autoCorrect={false}
+                onChangeText={(value) => {
+                  setUsername(value);
+                  setMessage('');
+                }}
+                onSubmitEditing={handleSignIn}
+                placeholder="Your username"
+                returnKeyType="next"
+                textContentType="username"
+                value={username}
+              />
 
-              <View className="gap-2">
-                <Text className="text-[13px] font-semibold text-[#263D36]">Password</Text>
-                <View className="h-[54px] flex-row items-center rounded-lg border border-[#659287] bg-white">
-                  <TextInput
-                    accessibilityLabel="Password"
-                    onChangeText={(value) => {
-                      setPassword(value);
-                      setMessage('');
-                    }}
-                    onSubmitEditing={handleSignIn}
-                    placeholder="Your password"
-                    placeholderTextColor={Palette.muted}
-                    returnKeyType="done"
-                    secureTextEntry={!passwordVisible}
-                    className="h-full flex-1 px-4 text-[15px] text-[#263D36]"
-                    textContentType="password"
-                    value={password}
-                  />
+              <FormField
+                label="Password"
+                onChangeText={(value) => {
+                  setPassword(value);
+                  setMessage('');
+                }}
+                onSubmitEditing={handleSignIn}
+                placeholder="Your password"
+                returnKeyType="done"
+                secureTextEntry={!passwordVisible}
+                textContentType="password"
+                value={password}
+                trailingAction={
                   <Pressable
                     accessibilityLabel={passwordVisible ? 'Hide password' : 'Show password'}
                     accessibilityRole="button"
-                    onPress={() => setPasswordVisible(!passwordVisible)}
+                    onPress={() => setPasswordVisible((visible) => !visible)}
                     className="h-full min-w-14 items-center justify-center">
                     <Text className="text-[13px] font-bold text-[#263D36]">
                       {passwordVisible ? 'Hide' : 'Show'}
                     </Text>
                   </Pressable>
-                </View>
-              </View>
+                }
+              />
 
-              <Pressable accessibilityRole="button" onPress={handleSignIn}>
-                {({ pressed }) => (
-                  <View
-                    className={`mt-1 h-14 w-full flex-shrink-0 flex-row items-center justify-between rounded-lg bg-[#263D36] px-[18px] ${
-                      pressed ? 'opacity-[0.85]' : ''
-                    }`}>
-                    <Text className="flex-shrink-0 text-[15px] font-bold text-white">
-                      Sign in
-                    </Text>
-                    <Text className="flex-shrink-0 text-[21px] text-[#FFDDB0]">→</Text>
-                  </View>
-                )}
-              </Pressable>
+              <PrimaryButton title="Sign in" onPress={handleSignIn} />
 
               {message ? (
                 <Text
@@ -123,15 +97,11 @@ export default function HomeScreen() {
                 </Text>
               ) : null}
 
-              <View className="flex-row items-center justify-center gap-1">
-                <Text className="text-[13px] text-[#4A685E]">Don&apos;t have an account?</Text>
-                <Pressable
-                  accessibilityRole="link"
-                  onPress={() => router.push('/register')}
-                  className="p-1">
-                  <Text className="text-[13px] font-bold text-[#38645A]">Register</Text>
-                </Pressable>
-              </View>
+              <AuthFooterLink
+                prompt="Don't have an account?"
+                label="Register"
+                onPress={() => router.push('/register')}
+              />
             </View>
 
             <View className="mt-8 flex-row items-center gap-3">

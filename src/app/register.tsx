@@ -4,14 +4,16 @@ import {
   Image,
   KeyboardAvoidingView,
   Platform,
-  Pressable,
   ScrollView,
   Text,
-  TextInput,
   View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import AuthFooterLink from '@/components/AuthFooterLink';
+import AuthHeading from '@/components/AuthHeading';
+import FormField from '@/components/FormField';
+import PrimaryButton from '@/components/PrimaryButton';
 import { Palette } from '@/constants/theme';
 
 export default function RegisterScreen() {
@@ -68,113 +70,73 @@ export default function RegisterScreen() {
               </Text>
             </View>
 
-            <View className="mb-[34px]">
-              <Text className="mb-3 text-[11px] font-bold tracking-[1.5px] text-[#4A685E]">
-                Create Account
-              </Text>
-              <Text className="text-[42px] font-bold leading-[46px] text-[#263D36]">
-                {'Join us\ntoday!'}
-              </Text>
-              <Text className="mt-3 text-[15px] leading-[22px] text-[#4A685E]">
-                Create an account to book trusted home services.
-              </Text>
-            </View>
+            <AuthHeading
+              eyebrow="Create Account"
+              title={'Join us\ntoday!'}
+              description="Create an account to book trusted home services."
+            />
 
             <View className="gap-5">
-              <View className="gap-2">
-                <Text className="text-[13px] font-semibold text-[#263D36]">Username</Text>
-                <TextInput
-                  accessibilityLabel="Username"
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                  onChangeText={(value) => {
-                    setUsername(value);
-                    setMessage('');
-                  }}
-                  placeholder="Choose a username"
-                  placeholderTextColor={Palette.muted}
-                  returnKeyType="next"
-                  className="h-[54px] rounded-lg border border-[#659287] bg-white px-4 text-[15px] text-[#263D36]"
-                  textContentType="username"
-                  value={username}
-                />
-              </View>
+              <FormField
+                label="Username"
+                autoCapitalize="none"
+                autoCorrect={false}
+                onChangeText={(value) => {
+                  setUsername(value);
+                  setMessage('');
+                }}
+                placeholder="Choose a username"
+                returnKeyType="next"
+                textContentType="username"
+                value={username}
+              />
 
-              <View className="gap-2">
-                <Text className="text-[13px] font-semibold text-[#263D36]">Email</Text>
-                <TextInput
-                  accessibilityLabel="Email"
-                  autoCapitalize="none"
-                  autoComplete="email"
-                  autoCorrect={false}
-                  keyboardType="email-address"
-                  onChangeText={(value) => {
-                    setEmail(value);
-                    setMessage('');
-                  }}
-                  placeholder="you@example.com"
-                  placeholderTextColor={Palette.muted}
-                  returnKeyType="next"
-                  className="h-[54px] rounded-lg border border-[#659287] bg-white px-4 text-[15px] text-[#263D36]"
-                  textContentType="emailAddress"
-                  value={email}
-                />
-              </View>
+              <FormField
+                label="Email"
+                autoCapitalize="none"
+                autoComplete="email"
+                autoCorrect={false}
+                keyboardType="email-address"
+                onChangeText={(value) => {
+                  setEmail(value);
+                  setMessage('');
+                }}
+                placeholder="you@example.com"
+                returnKeyType="next"
+                textContentType="emailAddress"
+                value={email}
+              />
 
-              <View className="gap-2">
-                <Text className="text-[13px] font-semibold text-[#263D36]">Password</Text>
-                <TextInput
-                  accessibilityLabel="Password"
-                  autoComplete="new-password"
-                  onChangeText={(value) => {
-                    setPassword(value);
-                    setMessage('');
-                  }}
-                  placeholder="Create a password"
-                  placeholderTextColor={Palette.muted}
-                  returnKeyType="next"
-                  secureTextEntry
-                  className="h-[54px] rounded-lg border border-[#659287] bg-white px-4 text-[15px] text-[#263D36]"
-                  textContentType="newPassword"
-                  value={password}
-                />
-              </View>
+              <FormField
+                label="Password"
+                autoComplete="new-password"
+                onChangeText={(value) => {
+                  setPassword(value);
+                  setMessage('');
+                }}
+                placeholder="Create a password"
+                returnKeyType="next"
+                secureTextEntry
+                textContentType="newPassword"
+                value={password}
+              />
 
-              <View className="gap-2">
-                <Text className="text-[13px] font-semibold text-[#263D36]">
-                  Confirm password
-                </Text>
-                <TextInput
-                  accessibilityLabel="Confirm password"
-                  autoComplete="new-password"
-                  onChangeText={(value) => {
-                    setConfirmPassword(value);
-                    setMessage('');
-                  }}
-                  onSubmitEditing={handleRegister}
-                  placeholder="Enter your password again"
-                  placeholderTextColor={Palette.muted}
-                  returnKeyType="done"
-                  secureTextEntry
-                  className="h-[54px] rounded-lg border border-[#659287] bg-white px-4 text-[15px] text-[#263D36]"
-                  textContentType="newPassword"
-                  value={confirmPassword}
-                />
-              </View>
+              <FormField
+                label="Confirm password"
+                autoComplete="new-password"
+                onChangeText={(value) => {
+                  setConfirmPassword(value);
+                  setMessage('');
+                }}
+                onSubmitEditing={handleRegister}
+                placeholder="Enter your password again"
+                returnKeyType="done"
+                secureTextEntry
+                textContentType="newPassword"
+                value={confirmPassword}
+              />
 
-              <Pressable accessibilityRole="button" onPress={handleRegister}>
-                {({ pressed }) => (
-                  <View
-                    className={`mt-1 h-14 w-full flex-shrink-0 flex-row items-center justify-between rounded-lg bg-[#263D36] px-[18px] ${
-                      pressed ? 'opacity-[0.85]' : ''
-                    }`}>
-                    <Text className="flex-shrink-0 text-[15px] font-bold text-white">
-                      Create account
-                    </Text>
-                    <Text className="flex-shrink-0 text-[21px] text-[#FFDDB0]">→</Text>
-                  </View>
-                )}
-              </Pressable>
+              <PrimaryButton title="Create account" onPress={handleRegister} />
 
               {message ? (
                 <Text
@@ -184,15 +146,11 @@ export default function RegisterScreen() {
                 </Text>
               ) : null}
 
-              <View className="flex-row items-center justify-center gap-1">
-                <Text className="text-[13px] text-[#4A685E]">Already have an account?</Text>
-                <Pressable
-                  accessibilityRole="link"
-                  onPress={() => router.back()}
-                  className="p-1">
-                  <Text className="text-[13px] font-bold text-[#38645A]">Sign in</Text>
-                </Pressable>
-              </View>
+              <AuthFooterLink
+                prompt="Already have an account?"
+                label="Sign in"
+                onPress={() => router.back()}
+              />
             </View>
 
             <View className="mt-8 flex-row items-center gap-3">

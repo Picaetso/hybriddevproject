@@ -11,86 +11,12 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const services = [
-  'Cleaning',
-  'Plumbing',
-  'Electrical',
-  'Gardening',
-  'Painting',
-  'Appliances',
-  'Handyman',
-  'Pest Control',
-] as const;
-
-type ServiceName = (typeof services)[number];
-
-const serviceHighlights: Record<ServiceName, string> = {
-  Cleaning: 'Non-toxic, high-grade organic domestic sterilization',
-  Plumbing: 'Reliable repairs and installations from a vetted local specialist',
-  Electrical: 'Safe electrical repairs completed by a verified professional',
-  Gardening: 'Thoughtful garden care to keep your outdoor space thriving',
-  Painting: 'Careful surface preparation and a polished, lasting finish',
-  Appliances: 'Expert appliance diagnostics, maintenance, and repair',
-  Handyman: 'Trusted help with everyday home repairs and improvements',
-  'Pest Control': 'Careful, home-safe treatments from a vetted specialist',
-};
-
-const serviceInclusions: Record<ServiceName, string[]> = {
-  Cleaning: [
-    'Deep dusting & detailed baseboards',
-    'Kitchen degreasing & appliance wipe',
-    'Bathroom descaling & disinfection',
-    'Floor scrubbing & organic steam mop',
-  ],
-  Plumbing: [
-    'Plumbing system inspection',
-    'Leak detection and repair',
-    'Fixture and faucet service',
-    'Work-area cleanup',
-  ],
-  Electrical: [
-    'Electrical safety inspection',
-    'Fault diagnosis and repair',
-    'Fixture and outlet service',
-    'Final safety checks',
-  ],
-  Gardening: [
-    'Garden and planting-bed assessment',
-    'Weeding and seasonal pruning',
-    'Planting and soil care',
-    'Green-waste tidy-up',
-  ],
-  Painting: [
-    'Surface preparation and protection',
-    'Filling and sanding minor blemishes',
-    'Careful paint application',
-    'Work-area cleanup',
-  ],
-  Appliances: [
-    'Appliance condition assessment',
-    'Fault diagnosis',
-    'Repair recommendations',
-    'Function and safety check',
-  ],
-  Handyman: [
-    'On-site task assessment',
-    'Small home repairs',
-    'Fixture and hardware installation',
-    'Work-area cleanup',
-  ],
-  'Pest Control': [
-    'Property and pest assessment',
-    'Targeted treatment plan',
-    'Home-conscious application',
-    'Prevention recommendations',
-  ],
-};
-
-const availableTimes = [
-  { label: 'Morning', time: '09:00 AM' },
-  { label: 'Midday', time: '01:00 PM' },
-  { label: 'Evening', time: '04:30 PM' },
-];
+import {
+  availableTimes,
+  serviceHighlights,
+  serviceInclusions,
+  serviceNames,
+} from '@/constants/appData';
 
 function getDates() {
   return Array.from({ length: 4 }, (_, index) => {
@@ -113,7 +39,7 @@ function getDates() {
 export default function ServiceDetailsScreen() {
   const router = useRouter();
   const { service: serviceParam } = useLocalSearchParams<{ service?: string }>();
-  const service = services.find((item) => item === serviceParam) ?? 'Cleaning';
+  const service = serviceNames.find((item) => item === serviceParam) ?? 'Cleaning';
   const dates = getDates();
   const [selectedDate, setSelectedDate] = useState(0);
   const [selectedTime, setSelectedTime] = useState(1);

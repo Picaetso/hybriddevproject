@@ -9,66 +9,8 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import BottomNav from '@/components/BottomNav';
-
-type MenuItem = {
-  icon: number;
-  title: string;
-  subtitle: string;
-  badge?: string;
-  trailing?: string;
-};
-
-const activityItems: MenuItem[] = [
-  {
-    icon: require('@/assets/expo.icon/Assets/history.png'),
-    title: 'Order History',
-    subtitle: 'Check job status',
-    badge: '1 Active',
-  },
-  {
-    icon: require('@/assets/expo.icon/Assets/location.png'),
-    title: 'Saved Address',
-    subtitle: '142 Greenview Lane, Apt 4B',
-  },
-  {
-    icon: require('@/assets/expo.icon/Assets/favorite.png'),
-    title: 'Favorite Services',
-    subtitle: '3 technician & cleaners saved',
-  },
-];
-
-const preferenceItems: MenuItem[] = [
-  {
-    icon: require('@/assets/expo.icon/Assets/security.png'),
-    title: 'Account Security',
-    subtitle: 'Password, email, & 2FA',
-    badge: 'Active',
-  },
-  {
-    icon: require('@/assets/expo.icon/Assets/settings.png'),
-    title: 'Notifications & Reminders',
-    subtitle: 'Update maintenance schedule & promo',
-  },
-  {
-    icon: require('@/assets/expo.icon/Assets/language.png'),
-    title: 'Language',
-    subtitle: 'Primary app language',
-    trailing: 'English',
-  },
-];
-
-const helpItems: MenuItem[] = [
-  {
-    icon: require('@/assets/expo.icon/Assets/message.png'),
-    title: 'Help & Live Chat',
-    subtitle: '24/7 customer services',
-  },
-  {
-    icon: require('@/assets/expo.icon/Assets/terms.png'),
-    title: 'Terms & Conditions',
-    subtitle: 'Service usage agreements',
-  },
-];
+import { activityItems, helpItems, preferenceItems } from '@/constants/appData';
+import type { MenuItem } from '@/constants/appData';
 
 function MenuSection({
   title,

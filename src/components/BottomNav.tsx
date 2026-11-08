@@ -2,40 +2,12 @@ import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { Pressable, Text, View } from 'react-native';
 
+import { bottomNavItems } from '@/constants/appData';
+
 type BottomNavProps = {
   active: 'home' | 'profile';
   floating?: boolean;
 };
-
-const items: {
-  label: string;
-  icon: number;
-  route?: '/home' | '/profile';
-  key: string;
-}[] = [
-  {
-    label: 'Home',
-    icon: require('@/assets/expo.icon/Assets/home.png'),
-    route: '/home',
-    key: 'home',
-  },
-  {
-    label: 'Bookings',
-    icon: require('@/assets/expo.icon/Assets/calendar.png'),
-    key: 'bookings',
-  },
-  {
-    label: 'Messages',
-    icon: require('@/assets/expo.icon/Assets/message.png'),
-    key: 'messages',
-  },
-  {
-    label: 'Profile',
-    icon: require('@/assets/expo.icon/Assets/user.png'),
-    route: '/profile',
-    key: 'profile',
-  },
-];
 
 export default function BottomNav({ active, floating = false }: BottomNavProps) {
   const router = useRouter();
@@ -46,7 +18,7 @@ export default function BottomNav({ active, floating = false }: BottomNavProps) 
         floating ? 'absolute right-0 bottom-0 left-0' : ''
       }`}
     >
-      {items.map((item) => {
+      {bottomNavItems.map((item) => {
         const isActive = item.key === active;
         const route = item.route;
         const content = (

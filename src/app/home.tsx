@@ -11,72 +11,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import BottomNav from '@/components/BottomNav';
-
-const categories = [
-  {
-    name: 'Cleaning',
-    image:
-      'https://detailcleanings.com/wp-content/uploads/2021/05/how-to-sweep-floors.jpeg',
-  },
-  {
-    name: 'Plumbing',
-    image:
-      'https://trusteyman.com/wp-content/uploads/2019/02/how-does-plumbing-work-e1548696261445.jpeg',
-  },
-  {
-    name: 'Electrical',
-    image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQepCS2qLvaNzRuXln2zq3F75L4WldpMv3Dl-PwpGRDsFMNvF2HQk2sh24&s=10',
-  },
-  {
-    name: 'Gardening',
-    image:
-      'https://images.airtasker.com/v7/https://airtasker-seo-assets-prod.s3.amazonaws.com/en_AU/1781827869992-gardener-planting-red-flower-seedling.jpg?gravity=smart&w=1920&h=1080',
-  },
-  {
-    name: 'Painting',
-    image: 'https://www.maramani.com/cdn/shop/articles/1.jpg?v=1683367109&width=2048',
-  },
-  {
-    name: 'Appliances',
-    image:
-      'https://irp.cdn-website.com/0581a8fe934c48e1a6cc8d6d924bfafe/dms3rep/multi/opt/GettyImages-1309386316-640w.jpg',
-  },
-  {
-    name: 'Handyman',
-    image: 'https://www.redleescs.com/images/janitorial-services/handyman-with-tools-lg.jpg',
-  },
-  {
-    name: 'Pest Control',
-    image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv7gfOHZLpv5IAVSkAKquCEfjrhUtJIkCwvq43NP2IfBZO68QSU4juSvs&s=10',
-  },
-];
-
-const pros = [
-  {
-    name: 'Elena Rostova',
-    role: 'Certified Deep Cleaner',
-    rating: '4.9',
-    reviews: '(128 reviews)',
-    tag: 'Eco-Friendly Supplies',
-    price: '$35',
-    tagIcon: '♻',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuA-5OYSVr6TszF-yZsGuWSKUJMy4agSHpqOzWjE3Lo9O3JZJi0YvWrdi27Y9iXMO22ot9XNot2wEqM3h-VCf-OVAFUpm6zDsJCEkkL0JU2DJM3VPu4ZS3LkEG3Fms0mVYLHyE-jPKtIpT-XbL4nndx8y5eA4AxJtY8dTGmK7VpXtPrTOz-2K0bEaO0otBY6PDgJe5Q4vsF27vxNu38RUaBQnRwwVaWnwVyPjJMVtc7X_LIPoaRfn1iQSg',
-  },
-  {
-    name: 'David Miller',
-    role: 'Master Plumber & Pipe Specialist',
-    rating: '4.8',
-    reviews: '(94 reviews)',
-    tag: 'Fast Response',
-    price: '$45',
-    tagIcon: '⚡',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuBCQJ4sWA5v5jJURXBHgTyM9wASdLiZtd4DmxIGtnffawxEAgxRX3FtrtZNm9Zo7TO0tfbdFk6vDjF596heIvJoF1O1LENLLZJ_-HigsjOkIj6m4209CtLK2yHrRgjvlBpc4w2mkKGpMdgdsKmkWdGrKcW5wvgjXyDw8M75EQlig2IIzg2J-XcNHABCXiOeOjdRTvlfsUsYMzTbVI230hxOxOuecdzyd5onNzt_VEAQYcp09jZ1Ej1oag',
-  },
-];
+import { categories, pros } from '@/constants/appData';
 
 function SectionHeading({
   title,
