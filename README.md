@@ -94,8 +94,17 @@ Aplikasi ini memakai Expo Router, dan code diatas memanggil navigasi stack yang 
 Ide aplikasi cleaning services ini saya dapatkan dari project bersama dosen yang memiliki tema serupa, dimana mencari layanan pembersihan dan pemeliharaan bangunan masih belum memiliki wadah yang praktis untuk akses pelanggan. Target pengguna untuk aplikasi ini adalah masyrakat dewasa muda yang dirasa cukup bisa menggunakan aplikasi dan e-banking. Kebutuhan pengguna adalah sebagai berikut:
 - Kemudahan memesan & penjadwalan
 - Keamanan & kepercayaan
-- Pemabayaran praktis dan transparan
+- Pembayaran praktis & transparan
 - Manajemen komunikasi & pelacakan
 - Kebutuhan layanan yang spesifik (seperti servis AC)
+
+Tabel pemetaan kebutuhan:
+| Kebutuhan | Halaman | Komponen |
+| --- | --- | --- |
+| Kemudahan memsan & penjadwalan | Home & detail layanan | Kartu layanan di home.tsx. Opsi pilihan tanggal dan waktu pemesanan di halaman detail layanan |
+| Keamanan & kepercayaan | Detail layanan & profil | Rating dan logo verified pada profil penyedia layanan dan pengaturan keamanan di profil user |
+| Pembayaran praktis & transparan | Detail layanan | Bagian ringkasan pembayaran yang menampilkan billing secara rinci dan sesuai dengan angka akhir |
+| Manajemen komunikasi & pelacakan | Home & profil | Bagian upcoming services pada home yang bisa untuk memantau dan menghubungi layanan yang dipesan, serta help & live chat support pada profil |
+| Kebutuhan layanan yang spesifik | Home & detail layanan | Daftyar kategori layanan dan search bar pada halaman home, serta opsi pilihan jadwal pemesanan pada detail layanan |
 
 Tautan video demo: https://binusianorg-my.sharepoint.com/personal/freysia_saliman_binus_ac_id/_layouts/15/guestaccess.aspx?share=IQDNrGvF5x18T6O3Kk7_uMzXAQiSIR_V2iDSWlbmXNpY8w0&e=uHknK6
