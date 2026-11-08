@@ -28,7 +28,8 @@ React Native bekerja dengan menggunakan dua thread utama, yaitu JavaScript dan N
 3. Fast refresh: Developer lebih nyaman karena proses refresh yang sangat cepat, sehingga dapat melihat perubahan code secara instan. Ini jauh lebih baik daripada menunggu proses compile ulang yang lama. Proses debugging menjadi jauh lebih efektif dan produktif.
 
 Komponen adalah code UI yang independen dan dapat digunakan ulang. Contoh pada code saya:
-```export default function PrimaryButton({ title, onPress }: PrimaryButtonProps) {
+```
+export default function PrimaryButton({ title, onPress }: PrimaryButtonProps) {
   return (
     <Pressable accessibilityRole="button" onPress={onPress}>
       <View>
@@ -37,12 +38,14 @@ Komponen adalah code UI yang independen dan dapat digunakan ulang. Contoh pada c
       </View>
     </Pressable>
   );
-}```
+}
+```
 Ini adalah code untuk membuat button, yang saya gunakan berulang kali untuk inisialisasi button dan selanjutnya saya isikan teks pada button dan memberikan aksi untuk onPress nya.
 
 Props (Properties) adalah data konfigurasi yang dilewatkan dari komponen parent ke komponen child dan bersifat read-only oleh komponen child. Contoh pada code saya:
 Parent:
-```type AuthHeadingProps = {
+```
+type AuthHeadingProps = {
   eyebrow: string;
   title: string;
   description: string;
@@ -56,18 +59,21 @@ export default function AuthHeading({ eyebrow, title, description }: AuthHeading
       <Text>{description}</Text>
     </View>
   );
-}```
-
+}
+```
 Child:
-```<AuthHeading
+```
+<AuthHeading
   eyebrow="Cleaning-app"
   title={'Welcome\nback!'}
   description="Sign in to pick up where you left off."
-/>```
+/>
+```
 Komponen child membaca data dari parent, yaitu eyebrow, title, dan description adalah masing-masing string.
 
 State adalah data internal komponen yang dapat berubah seiring waktu, seperti input user. Ketika state berubah, komponen akan otomatis me-render ulang. Contoh pada code saya:
-```const [username, setUsername] = useState('');
+```
+const [username, setUsername] = useState('');
 
 <FormField
   label="Username"
@@ -92,4 +98,4 @@ Ide aplikasi cleaning services ini saya dapatkan dari project bersama dosen yang
 - Manajemen komunikasi & pelacakan
 - Kebutuhan layanan yang spesifik (seperti servis AC)
 
-Tautan video demo: https://binusianorg-my.sharepoint.com/personal/freysia_saliman_binus_ac_id/_layouts/15/guestaccess.aspx?share=IQDNrGvF5x18T6O3Kk7_uMzXAQiSIR_V2iDSWlbmXNpY8w0&e=MRPpZq
+Tautan video demo: https://binusianorg-my.sharepoint.com/personal/freysia_saliman_binus_ac_id/_layouts/15/guestaccess.aspx?share=IQCZv7Br6XJTQ68IS76FsZiLAYMKiJhKiWXoMdRIf2F2uWw&e=4JNb8A
