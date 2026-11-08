@@ -98,4 +98,4 @@ Ide aplikasi cleaning services ini saya dapatkan dari project bersama dosen yang
 - Manajemen komunikasi & pelacakan
 - Kebutuhan layanan yang spesifik (seperti servis AC)
 
-Tautan video demo: https://binusianorg-my.sharepoint.com/personal/freysia_saliman_binus_ac_id/_layouts/15/guestaccess.aspx?share=IQCZv7Br6XJTQ68IS76FsZiLAYMKiJhKiWXoMdRIf2F2uWw&e=4JNb8A
+Tautan video demo: https://binusianorg-my.sharepoint.com/personal/freysia_saliman_binus_ac_id/_layouts/15/guestaccess.aspx?share=IQDNrGvF5x18T6O3Kk7_uMzXAQiSIR_V2iDSWlbmXNpY8w0&e=uHknK6
